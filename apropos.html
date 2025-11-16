@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Mary-Shawina Martino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #6D5DCA;
+            --secondary-color: #8A7BC8;
+            --accent-color: #FF7E9D;
+            --light-color: #F8F7FF;
+            --dark-color: #4A4B68;
+            --text-color: #5A5A72;
+            --light-text: #FFFFFF;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4{
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(109, 93, 202, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-color), #E8E6FF);
+            color: var(--dark-color);
+            text-align: center;
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-color);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .text-collapse {
+            max-height: 200px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            position: relative;
+        }
+
+        .text-collapse.expanded {
+            max-height: 2000px;
+        }
+
+        .text-collapse:not(.expanded)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(transparent, var(--light-color));
+        }
+
+        .read-more-btn {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .read-more-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .read-more-btn i {
+            transition: var(--transition);
+        }
+
+        .read-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: white;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .skill-percentage {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+            width: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .contact h2 {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .contact .btn {
+            background: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        .contact .btn:hover {
+            background: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-text);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            display: block;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-col h3 {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col p, .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .text-collapse:not(.expanded) {
+                max-height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--light-color);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Mary-Shawina Martino</div>
+            <nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="#skills">Compétences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Mary-Shawina Martino</h1>
+            <p>Développeuse web en formation passionnée par les technologies numériques</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn">En savoir plus</a>
+                <a href="#contact" class="btn btn-outline">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="text-collapse" id="aboutText">
+                        <p><strong>Je m'appelle Mary-Shawina Martino, développeuse web en formation et passionnée par les technologies numériques.</strong></p>
+                        
+                        <p>Titulaire d'un Baccalauréat Technologique en Informatique, j'ai acquis de solides compétences de base en outils informatiques, logique, méthodologie de travail et analyse de problèmes. Ce parcours m'a donné une vision structurée et rigoureuse du domaine numérique.</p>
+                        
+                        <p>Actuellement inscrite au programme D-CLIC – Développement Web, je me forme à la création de sites modernes, interactifs et adaptés aux besoins des utilisateurs. Je développe mes compétences en HTML, CSS, JavaScript, ainsi qu'en web design et conception d'interfaces. Mon objectif est de maîtriser les technologies front-end et de produire des projets clairs, fonctionnels et professionnels.</p>
+                        
+                        <p>Curieuse, organisée et motivée, je possède une forte capacité d'apprentissage et une réelle adaptation face aux nouvelles technologies. Je m'intéresse également aux langues et je poursuis en parallèle un projet personnel d'apprentissage multilingue, ce qui renforce ma polyvalence et mon ouverture culturelle.</p>
+                        
+                        <p>Sérieuse, motivée et dotée d'une grande capacité d'adaptation, je suis constamment en quête d'apprentissage et d'évolution. J'accorde une importance particulière à la qualité du travail, à la cohérence visuelle et à l'expérience utilisateur.</p>
+                        
+                        <p>Déterminée à construire une carrière solide, j'ambitionne de poursuivre mes études dans des domaines exigeants, notamment le droit, tout en conservant une orientation technologique et créative. Je mets aujourd'hui mes compétences et mon sérieux au service de projets concrets afin de développer une identité professionnelle complète et tournée vers l'avenir.</p>
+                    </div>
+                    <div class="read-more-btn" id="readMoreBtn">
+                        <span>Voir plus</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <div class="skills-container">
+                <!-- Compétences Techniques -->
+                <div class="skill-category">
+                    <h3>Compétences Techniques</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML/CSS</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percentage">65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Câblage réseau</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Dépannage informatique</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Logiciels -->
+                <div class="skill-category">
+                    <h3>Logiciels</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Installation Windows</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Word/Excel</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">PowerPoint</span>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="60"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Canva</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Langues -->
+                <div class="skill-category">
+                    <h3>Langues</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Français</span>
+                            <span class="skill-percentage">100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="100"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Créole</span>
+                            <span class="skill-percentage">100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="100"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Anglais</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Italien</span>
+                            <span class="skill-percentage">30%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="30"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Me contacter</h2>
+            <p>Je suis toujours ouverte à de nouvelles opportunités et collaborations intéressantes. N'hésitez pas à me contacter pour discuter de votre projet ou simplement pour échanger.</p>
+            
+            <div class="contact-form">
+                <div id="formMessage" class="form-message"></div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="submitBtn">
+                        <span id="btnText">Envoyer</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <a href="#home">Accueil</a>
+                    <a href="#about">À propos</a>
+                    <a href="#skills">Compétences</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contacts</h3>
+                    <p><i class="fas fa-envelope"></i> martinomaryshawina@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +(509)37983781</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Thomassin 46, Port-au-Prince, Haïti</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Tous droits réservés &copy; 2025 Mary-Shawina Martino</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialiser EmailJS avec votre Public Key
+        emailjs.init("YOUR_PUBLIC_KEY"); // À remplacer par votre clé publique EmailJS
+
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Animation au défilement
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav ul').classList.remove('show');
+            });
+        });
+
+        // Animation des barres de compétences
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBar = entry.target;
+                        const width = skillBar.getAttribute('data-width') + '%';
+                        setTimeout(() => {
+                            skillBar.style.width = width;
+                        }, 300);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+
+        // Bouton "Voir plus" pour la section À propos
+        const readMoreBtn = document.getElementById('readMoreBtn');
+        const aboutText = document.getElementById('aboutText');
+
+        readMoreBtn.addEventListener('click', function() {
+            aboutText.classList.toggle('expanded');
+            readMoreBtn.classList.toggle('expanded');
+            
+            if (aboutText.classList.contains('expanded')) {
+                readMoreBtn.innerHTML = '<span>Voir moins</span><i class="fas fa-chevron-up"></i>';
+            } else {
+                readMoreBtn.innerHTML = '<span>Voir plus</span><i class="fas fa-chevron-down"></i>';
+            }
+        });
+
+        // Gestion du formulaire de contact avec EmailJS
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Afficher le loading
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<div class="loading"></div>Envoi en cours...';
+            
+            // Récupérer les données du formulaire
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            // Envoyer l'email via EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+                .then(function(response) {
+                    formMessage.textContent = 'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.';
+                    formMessage.className = 'form-message success';
+                    contactForm.reset();
+                }, function(error) {
+                    formMessage.textContent = 'Une erreur est survenue. Vous pouvez aussi m\'envoyer un email directement à martinomaryshawina@gmail.com';
+                    formMessage.className = 'form-message error';
+                })
+                .finally(function() {
+                    // Réinitialiser le bouton
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Envoyer';
+                    
+                    // Cacher le message après 5 secondes
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                });
+        });
+
+        // Solution de secours simple (sans EmailJS)
+        function sendEmailSimple(formData) {
+            // Simuler l'envoi d'email (pour GitHub Pages)
+            formMessage.textContent = 'Fonctionnalité contact en cours de configuration. Envoyez-moi directement un email à martinomaryshawina@gmail.com';
+            formMessage.className = 'form-message success';
+            contactForm.reset();
+            
+            submitBtn.disabled = false;
+            btnText.textContent = 'Envoyer';
+            
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+            
+            return Promise.resolve();
+        }
+
+        // Utiliser la solution simple pour GitHub Pages
+        contactForm.onsubmit = function(e) {
+            e.preventDefault();
+            
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<div class="loading"></div>Envoi en cours...';
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            sendEmailSimple(formData);
+        };
+    </script>
+</body>
+</html>
